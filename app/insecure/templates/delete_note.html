@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Delete Note (Insecure)</h2>
+<p>No ownership checks. Any user can delete any note.</p>
+<form method="POST" action="/insecure/notes/{{ note.id }}/delete">
+  <input type="hidden" name="username" value="{{ username }}">
+  <button type="submit">Delete</button>
+</form>
+{% endblock %}

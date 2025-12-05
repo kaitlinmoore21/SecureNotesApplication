@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SecureNotes (Insecure)</title>
+</head>
+<body>
+
+
+<div id="dom-target"></div>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const payload = params.get("domxss");
+    if (payload) {
+    
+        document.getElementById("dom-target").innerHTML = payload;
+    }
+</script>
+
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

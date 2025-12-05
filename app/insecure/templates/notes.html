@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Your Notes (Insecure)</h2>
+<p>Notes are global, not user-bound, rich text is rendered raw (XSS), and SQL injection is intentionally possible.</p>
+
+<form method="GET" action="/insecure/search">
+ <input type="text" name="q" placeholder="Search (allows SQL injection)">
+ <button type="submit">Search</button>
+</form>
+
+<hr>
+
+{% if notes %}
+    <ul>
+    {% for note in notes %}
+    <li>
+   <strong>{{ note.title }}</strong><br>
+     {{ note.content | safe }}  <br>
+ <a href="/insecure/notes/{{ note.id }}/edit?username={{ username }}">Edit</a>
+  <a href="/insecure/notes/{{ note.id }}/delete?username={{ username }}">Delete</a>
+   </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no notes. Use the form below to create your first one.</p>
+{% endif %}
+
+<hr>
+
+<h3>Create New Note</h3>
+<form method="POST" action="/insecure/notes">
+    <input type="hidden" name="username" value="{{ username }}">
+    
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+    
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+    
+    <button type="submit">Add Note</button>
+</form>
+
+{% endblock %}

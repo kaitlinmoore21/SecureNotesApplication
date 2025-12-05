@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+
+{% if results %}
+  <ul>
+    {% for note in results %}
+      <li>
+        <strong>{{ note.title }}</strong><br>
+        {{ note.content }}<br>
+        <a href="/insecure/notes/{{ note.id }}/edit?username={{ request.query_params.get('username') }}">Edit</a> |
+        <a href="/insecure/notes/{{ note.id }}/delete?username={{ request.query_params.get('username') }}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No notes found matching your search.</p>
+{% endif %}
+
+<a href="/insecure/notes?username={{ request.query_params.get('username') }}">Back to notes</a>
+{% endblock %}

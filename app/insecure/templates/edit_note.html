@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Note (Insecure)</h2>
+<p>No authentication checks, raw HTML allowed, no sanitation.</p>
+<form method="POST" action="/insecure/notes/{{ note.id }}/edit">
+  <input type="hidden" name="username" value="{{ username }}">
+  
+  <label for="title">Title:</label><br>
+  <input id="title" name="title" value="{{ note.title }}"><br><br>
+
+  <label for="content">Content:</label><br>
+  <textarea id="content" name="content" rows="6" cols="50">{{ note.content }}</textarea><br><br>
+
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SecureNotes — Insecure Home</title>
+</head>
+<body>
+<h1>Insecure Home Page</h1>
+<p>This version intentionally includes SQLi, XSS, plaintext passwords, no auth checks, and more.</p>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SecureNotes — Insecure Home</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #f7e6e6; }
+nav { background: #8b0000; color: white; padding: 10px 20px; display: flex; gap: 20px; }
+nav a { color: white; font-weight: bold; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+.container { padding: 20px; }
+.box { background: white; padding: 20px; border-left: 6px solid red; border-radius: 5px; }
+</style>
+</head>
+<body>
+<nav>
+<a href="/insecure/register">Register</a>
+<a href="/insecure/login">Login</a>
+<a href="/insecure/notes">View Notes</a>
+<a href="/insecure/search">Search Notes</a>
+<a href="/insecure/edit">Edit Notes</a>
+<a href="/insecure/delete">Delete Notes</a>
+</nav>
+
+
+<div class="container">
+<h1>Welcome to SecureNotes (Insecure Version)</h1>
+<div class="box">
+<h2>⚠ This Application Contains Deliberate Vulnerabilities</h2>
+<ul>
+<li><strong>SQL Injection</strong> — raw SQL string concatenation</li>
+<li><strong>XSS (Stored & Reflected)</strong> — user input rendered without escaping</li>
+<li><strong>Sensitive Data Exposure</strong> — plaintext passwords stored in database</li>
+<li><strong>No Session Protection</strong> — predictable cookies</li>
+<li><strong>No Authorization Enforcement</strong></li>
+</ul>
+<p>
+This version is intentionally unsafe for educational and testing purposes. Tools like OWASP ZAP can easily exploit these flaws.
+</p>
+</div>
+</div>
+</body>
+</html>
