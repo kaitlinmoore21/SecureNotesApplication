@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Delete Note (Secure)</h2>
+
+<form method="POST" action="/secure/notes/{{ note.id }}/delete">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    <p>Are you sure you want to delete <strong>{{ note.title | e }}</strong>?</p>
+
+    <button type="submit">Yes, delete</button>
+</form>
+
+{% endblock %}

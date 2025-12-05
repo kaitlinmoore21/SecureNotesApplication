@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Note (Secure)</h2>
+<p>Editing is authorized and sanitized.</p>
+
+<form method="POST" action="/secure/notes/{{ note.id }}/edit">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    <label>Title:</label>
+    <input 
+        name="title" 
+        value="{{ note.title | e }}" 
+        required
+    >
+
+    <label>Content:</label>
+    <textarea name="content" required>{{ note.content | e }}</textarea>
+
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

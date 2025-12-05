@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Search Notes</h2>
+
+<form action="/secure/search" method="get">
+  <input 
+      type="text" 
+      name="q" 
+      placeholder="Search notes" 
+      value="{{ query | default('') | e }}"
+  >
+  <button type="submit">Search</button>
+</form>
+
+{% if notes %}
+<ul>
+    {% for note in notes %}
+    <li>
+        <strong>{{ note.title | e }}</strong><br>
+        {{ note.content | e }}
+        <br>
+        <a href="/secure/notes/{{ note.id }}/edit">Edit</a>
+        <a href="/secure/notes/{{ note.id }}/delete">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% elif query %}
+<p>No results found for "{{ query | e }}".</p>
+{% endif %}
+
+{% endblock %}
