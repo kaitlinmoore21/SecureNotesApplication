@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Edit Note (Secure)</h2>
-<p>Editing is authorized and sanitized.</p>
+<p>Editing is authorized and sanitised.</p>
 
 <form method="POST" action="/secure/notes/{{ note.id }}/edit">
     <input type="hidden" name="csrf_token" value="{{ csrf_token }}">

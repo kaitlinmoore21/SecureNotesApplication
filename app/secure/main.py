@@ -29,7 +29,6 @@ app.add_middleware(
     same_site="Lax"
 )
 
-# Optional CORS (if needed for AJAX)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://yourdomain.com"],  
@@ -112,7 +111,7 @@ def edit_note_page(request: Request, note_id: int = Path(...), username: str = D
 
 @app.post("/secure/notes/{note_id}/edit")
 def edit_note(note_id: int = Path(...), username: str = Depends(get_current_user), title: str = Form(...), content: str = Form(...), csrf_token: str = Form(...), db: Session = Depends(get_db)):
-    crud.validate_csrf_token(csrf_token, db)  # CSRF
+    crud.validate_csrf_token(csrf_token, db)
     success = crud.update_note(db, note_id, username, title, content)
     if not success:
         raise HTTPException(status_code=404, detail="Note not found or unauthorized")
