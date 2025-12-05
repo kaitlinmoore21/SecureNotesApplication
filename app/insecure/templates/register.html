@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Register (Insecure)</h2>
+<p>This version uses plaintext passwords and no input validation.</p>
+<form method="POST" action="/insecure/register">
+  <label>Username:</label>
+  <input type="text" name="username" required>
+
+  <label>Password:</label>
+  <input type="text" name="password" required> 
+
+  <button type="submit">Create Account</button>
+</form>
+{% endblock %}

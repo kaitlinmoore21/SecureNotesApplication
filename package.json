@@ -1,0 +1,31 @@
+{
+  "name": "securenotes",
+  "version": "1.0.0",
+  "description": "Insecure version running information:",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+  "start": "node index.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaitlinmoore21/SecureNotesApplication.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kaitlinmoore21/SecureNotesApplication/issues"
+  },
+  "homepage": "https://github.com/kaitlinmoore21/SecureNotesApplication#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1"
+  },
+  "dependencies": {
+    "undici-types": "^7.16.0"
+  }
+}

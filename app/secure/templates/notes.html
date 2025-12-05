@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Notes (Secure)</h2>
+<p>Notes are tied to a user ID, sanitized to prevent XSS, and queries are parameterized to prevent SQL injection.</p>
+
+<form method="GET" action="/secure/search">
+    <input 
+        type="text" 
+        name="q" 
+        placeholder="Search" 
+        value="{{ query | default('') | e }}"
+    >
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+{% if notes %}
+    {% for note in notes %}
+    <li>
+        <strong>{{ note.title | e }}</strong><br>
+        {{ note.content | e }}
+        <br>
+        <a href="/secure/notes/{{ note.id }}/edit">Edit</a>
+        <a href="/secure/notes/{{ note.id }}/delete">Delete</a>
+    </li>
+    {% endfor %}
+{% else %}
+    <p>You have no notes. Use the form below to create your first one.</p>
+{% endif %}
+</ul>
+
+<h3>Add New Note</h3>
+<form method="POST" action="/secure/notes">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div>
+        <label for="title_input">Title:</label>
+        <input type="text" id="title_input" name="title" required>
+    </div>
+    <div>
+        <label for="content_textarea">Content:</label>
+        <textarea id="content_textarea" name="content" rows="5" required></textarea>
+    </div>
+    <button type="submit">Create Note</button>
+</form>
+
+{% endblock %}

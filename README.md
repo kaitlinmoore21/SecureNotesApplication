@@ -29,6 +29,7 @@ python -m venv .venv
 
 # Install required libraries
 pip install fastapi uvicorn[standard] python-dotenv sqlalchemy python-multipart passlib[bcrypt] jinja2
+pip install itsdangerous
 
 # Start the server: 
 python -m uvicorn app.secure.main:app --reload

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Login (Secure)</h2>
+
+<div class="box text-center">
+<strong>Security Status: High Protection</strong>
+<ul>
+    <li>Passwords are securely Hashed (Bcrypt)</li>
+    <li>Secure Session Management</li>
+    <li>Input sanitized for XSS & SQL Injection</li>
+</ul>
+</div>
+
+<form method="POST" action="/secure/login">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    <label>Username:</label>
+    <input 
+        type="text"
+        name="username"
+        required
+        maxlength="50"
+        pattern="[A-Za-z0-9_]{3,50}"
+        title="Letters, numbers, and underscores only"
+    >
+
+    <label>Password:</label>
+    <input 
+        type="password"
+        name="password"
+        required
+        minlength="8"
+    >
+
+    <button type="submit">Login</button>
+</form>
+
+{% if error %}
+<p style="color:red;">{{ error | e }}</p>
+{% endif %}
+{% endblock %}

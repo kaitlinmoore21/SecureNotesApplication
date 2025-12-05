@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecureNotes (Secure)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" 
+          content="
+          default-src 'self';
+          script-src 'self';
+          style-src 'self' 'unsafe-inline';
+          img-src 'self';
+          font-src 'self';
+          form-action 'self';
+          object-src 'none';
+          base-uri 'none';
+          frame-ancestors 'none';
+          ">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #e6f7ea; padding: 0;}
+        nav { background: #006400; color: white; padding: 10px 20px; display: flex; gap: 20px; }
+        nav a { color: white; font-weight: bold; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        .container { padding: 20px; }
+        .box { background: white; padding: 20px; border-left: 6px solid green; border-radius: 5px; margin-bottom: 20px;}
+        input, textarea, button { display: block; width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box; }
+        button { width: auto; background: #006400; color: white; border: none; cursor: pointer; border-radius: 3px; }
+        button:hover { background: #004d00; }
+        label { font-weight: bold; margin-top: 10px; display: block; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/secure/register">Register</a>
+    <a href="/secure/">Login</a>
+    <a href="/secure/notes">Your Notes</a>
+    <a href="/secure/search">Search Notes</a>
+    <a href="/secure/logout">Logout</a>
+</nav>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

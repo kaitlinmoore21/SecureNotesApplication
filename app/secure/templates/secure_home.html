@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to SecureNotes (Secure Version)</h1>
+
+<div class="box">
+<h2>Security Enabled</h2>
+<ul>
+<li><strong>Password Hashing</strong> — bcrypt</li>
+<li><strong>Secure Sessions</strong> — HttpOnly, signed cookies</li>
+<li><strong>CSRF Protection</strong></li>
+<li><strong>Parameterized SQL</strong> — prevents SQL Injection</li>
+<li><strong>Escaped Output</strong> — prevents XSS</li>
+<li><strong>Authorization Controls</strong> — no IDOR</li>
+</ul>
+<p>This application follows OWASP-recommended secure coding practices.</p>
+</div>
+{% endblock %}
